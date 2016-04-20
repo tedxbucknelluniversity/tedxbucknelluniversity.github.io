@@ -20,6 +20,11 @@ html, body {
   color: #FF2B06; /* tedx red */
 }
 
+@media (min-width:500px) {
+#welcome {
+
+}
+
 .mainTitle {
   font-family: Title-Font;
   letter-spacing: 4px;
