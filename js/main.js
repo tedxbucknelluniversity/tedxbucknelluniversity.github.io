@@ -1,6 +1,8 @@
 // add videos in pairs
-var vid_links = [[{link:"9h2L2bBF4RU", name: "Jane Maas", year: "2015"}, {link: "2sCjFSUn9-E", name: "Christopher Dunne", year: "2015"}], [{link: "6pD-Lu_A_DM", name: "Gregory Wolf", year: "2015"}, {link: "hC2wegjCX7I", name: "Joseph Tranquillo", year: "2015"}], [{link: "O2HK4HoFepY", name: "Carmen Gillespie", year: "2015"}]];
-
+var all_vid_links = {"2015": [[{link:"9h2L2bBF4RU", name: "Jane Maas", year: "2015"}, {link: "2sCjFSUn9-E", name: "Christopher Dunne", year: "2015"}], [{link: "6pD-Lu_A_DM", name: "Gregory Wolf", year: "2015"}, {link: "hC2wegjCX7I", name: "Joseph Tranquillo", year: "2015"}], [{link: "O2HK4HoFepY", name: "Carmen Gillespie", year: "2015"}]],
+                "2016": [[{link:"KhoMqbiUax8", name: "Michael Johnson-Cramer", year: "2016"}, {link:"MVIdIApljLg", name: "Muyambi Muyambi", year: "2016"}], [{link:"PpUouaQeUwA", name: "Carmen Henne-Ochoa", year: "2016"},  {link:"zNO7W86QjKA", name: "Pete Kadens", year: "2016"}], [{link:"MDDmJO_GBa0", name: "Kelly Knox", year: "2016"},  {link:"S_xe649Ug3Q", name: "Matt Giordano", year: "2016"}], [{link: "iq4O-eCC_ys", name:"Anthony Scrima", year:"2016"}]]
+                }
+current_year = "2016";
 
 $('.bottom-nav').affix({
   offset: {
@@ -51,6 +53,7 @@ $(function() {
 
   function setVideos() {
     $(".vidinfo").html("");
+    vid_links = all_vid_links[current_year];
     for (var i = 0; i < vid_links[current_video].length; i++) {
       $("#vidbox" + (i+1)).html('<iframe width="' + width + '" height="' + width/1.77 + '" src="https://www.youtube.com/embed/' + vid_links[current_video][i]["link"] + '" frameborder="0" allowfullscreen></iframe>');
       $("#speaker" + (i+1)).html(vid_links[current_video][i]["name"]);
@@ -75,6 +78,17 @@ $(function() {
     }
     setVideos();
   });
+
+  $(".yearButton").on("click", function() {
+    if ($(this).hasClass("active")) {
+      return;
+    }
+    $(".yearButton").removeClass("active");
+    $(this).addClass("active");
+    current_video = 0;
+    current_year = $(this).text();
+    setVideos();
+  })
 
   // tedx is color:#FF2B06  R: 255 G: 43 B: 6
   // bucknell is color:#f29900  R: 242 G: 153 B: 0
