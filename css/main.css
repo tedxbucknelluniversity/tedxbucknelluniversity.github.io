@@ -28,7 +28,7 @@ html, body {
 .mainTitle {
   font-family: Title-Font;
   letter-spacing: 4px;
-  font-size:120pt;
+  font-size:60pt;
   font-weight: 500;
 }
 
@@ -134,6 +134,10 @@ a[rel="tag"]:after {
 
 .biolink:hover {
   cursor: pointer;
+}
+
+.video-left-right-buttons {
+    font-size: 30pt
 }
 
 
